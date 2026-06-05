@@ -1,0 +1,14 @@
+/* 폰 프레임 내부 컨텐츠 영역 */
+.inner {
+  flex: 1;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* 스크롤바 숨기기 */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.inner::-webkit-scrollbar {
+  display: none;
+}

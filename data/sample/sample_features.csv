@@ -1,0 +1,3 @@
+﻿trip_type,origin,destination,dpd,price_krw,pred_saving,wait_probability,decision
+oneway,ICN,NRT,21,180000,12000,0.22,BUY
+roundtrip,ICN,NRT,21,360000,28000,0.71,WAIT

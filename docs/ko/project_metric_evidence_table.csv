@@ -1,0 +1,23 @@
+﻿metric_name,value,unit,context,source_doc,source_section_or_keyword,public_safe,confidence,notes
+collection_period,2026-04-16 08:00 ~ 2026-06-04 00:00,datetime range,final full retrain data freeze,docs/phase_16e_frontend_model_info_polish.md,final model fallback metadata,yes,high,공개 문서에는 기간만 사용한다.
+observation_points,147,count,final full retrain data freeze,docs/phase_16e_frontend_model_info_polish.md,fallback metadata,yes,high,관측 시점 수.
+service_db_observations,141120,rows,final full retrain data freeze,docs/phase_16e_frontend_model_info_polish.md,fallback metadata,yes,high,서비스 DB 관측 요약 수.
+trainable_rows_total,4562741,rows,final full retrain dataset,docs/phase_16e_frontend_model_info_polish.md,fallback metadata,yes,high,학습 가능 항공권 row 총계.
+trainable_rows_oneway,989669,rows,final full retrain dataset,docs/phase_16e_frontend_model_info_polish.md,fallback metadata,yes,high,편도 final rows와 일치.
+trainable_rows_roundtrip,3573072,rows,final full retrain dataset,docs/phase_16e_frontend_model_info_polish.md,fallback metadata,yes,high,왕복 final rows와 일치.
+initial_exp_a_buy_regret,20.79,percent,Phase 14-8 Exp-A comparison,docs/phase_14_8_stage1_alignment_holdout_validation.md,Exp-C validation,yes,high,Exp-C 비교 기준.
+exp_c_buy_regret,15.94,percent,Phase 14-8 Exp-C comparison,docs/phase_14_8_stage1_alignment_holdout_validation.md,Exp-C validation,yes,high,Exp-A 대비 감소.
+initial_exp_a_wait_success,31.37,percent,Phase 14-8 Exp-A comparison,docs/phase_14_8_stage1_alignment_holdout_validation.md,Exp-C validation,yes,high,Exp-C 비교 기준.
+exp_c_wait_success,41.52,percent,Phase 14-8 Exp-C comparison,docs/phase_14_8_stage1_alignment_holdout_validation.md,Exp-C validation,yes,high,Exp-A 대비 증가.
+stage1_alignment_pred_saving_72h_max_drop,0.2693,pearson_r,Phase 14-8 Stage1 alignment,docs/phase_14_8_stage1_alignment_holdout_validation.md,Stage1 alignment,yes,high,Stage1 정렬이 강하지 않다는 근거.
+stage1_alignment_pred_saving_exp_c_label,0.2093,pearson_r,Phase 14-8 Stage1 alignment,docs/phase_14_8_stage1_alignment_holdout_validation.md,Stage1 alignment,yes,high,Stage1 target mismatch 리스크 근거.
+compact_matched_rows,11939,rows,Phase 14-8 coverage bottleneck,docs/phase_14_8_stage1_alignment_holdout_validation.md,coverage check,yes,high,compact pred_saving coverage 병목 근거.
+oneway_route_holdout_min_rows_issue,244,rows,Phase 14-8 route holdout,docs/phase_14_8_stage1_alignment_holdout_validation.md,route holdout,yes,high,route별 min 300 미달 근거.
+final_oneway_threshold,0.80,probability threshold,Phase 16 final live model,docs/phase_16e_frontend_model_info_polish.md,live model status,yes,high,WAIT decision 기준.
+final_roundtrip_threshold,0.65,probability threshold,Phase 16 final live model,docs/phase_16e_frontend_model_info_polish.md,live model status,yes,high,WAIT decision 기준.
+final_oneway_model_version,finaltest_expc_full_final_v1_thr065_oneway,string,Phase 16 live model,docs/phase_16e_frontend_model_info_polish.md,live model status,yes,high,버전명만 공개.
+final_roundtrip_model_version,finaltest_expc_full_final_v1_thr065_roundtrip,string,Phase 16 live model,docs/phase_16e_frontend_model_info_polish.md,live model status,yes,high,버전명만 공개.
+final_oneway_review_buy_regret,8.56,percent,Phase 16B-3C threshold review,docs/phase_16b_3c_baseline_threshold_review.md,oneway threshold 0.80,yes,high,review holdout reconstruction 기준.
+final_oneway_review_wait_success,83.06,percent,Phase 16B-3C threshold review,docs/phase_16b_3c_baseline_threshold_review.md,oneway threshold 0.80,yes,high,review holdout reconstruction 기준.
+final_roundtrip_review_buy_regret,18.93,percent,Phase 16B-3C threshold review,docs/phase_16b_3c_baseline_threshold_review.md,roundtrip threshold 0.65,yes,high,왕복 0.65 선택 근거.
+final_roundtrip_review_wait_success,75.24,percent,Phase 16B-3C threshold review,docs/phase_16b_3c_baseline_threshold_review.md,roundtrip threshold 0.65,yes,high,왕복 0.65 선택 근거.

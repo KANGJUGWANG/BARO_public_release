@@ -1,0 +1,218 @@
+/* ModelInfoPage.module.css */
+.page {
+  min-height: 100%;
+  background: var(--bg, #f0f4f8);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: var(--primary, #1A2B5E);
+}
+
+.backBtn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+.title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.main {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+.section {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(26,43,94,0.08);
+}
+
+.sectionTitle {
+  font-size: 15px;
+  color: var(--primary, #1A2B5E);
+  font-weight: 800;
+  text-transform: none;
+  letter-spacing: 0;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  border-left: 3px solid var(--primary, #1A2B5E);
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--primary, #1A2B5E);
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.desc {
+  font-size: 14px;
+  color: var(--text, #1e293b);
+  line-height: 1.65;
+}
+
+.emptyBox {
+  padding: 20px;
+  background: #f0f4f8;
+  border-radius: 12px;
+  text-align: center;
+  color: var(--muted, #94a3b8);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.modelNote {
+  font-size: 11px;
+  color: var(--muted, #94a3b8);
+  line-height: 1.5;
+}
+
+.modelStatusGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.modelStatusCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.modelStatusName {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--primary, #1A2B5E);
+}
+
+.modelStatusVersion {
+  margin: 3px 0 0;
+  font-size: 10px;
+  color: var(--muted, #94a3b8);
+  word-break: break-all;
+}
+
+.modelStatusActive,
+.modelStatusInactive {
+  flex-shrink: 0;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.modelStatusActive {
+  color: #166534;
+  background: #dcfce7;
+}
+
+.modelStatusInactive {
+  color: #991b1b;
+  background: #fee2e2;
+}
+
+.modelFileGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modelFileItem {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+}
+
+.modelFileTitle {
+  margin: 0 0 5px;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--primary, #1A2B5E);
+}
+
+.stageFileGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.stageFileCard {
+  padding: 9px 10px;
+  border-radius: 9px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.stageFileTitle {
+  margin: 0 0 5px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #1e293b;
+}
+
+.stageFileMeta {
+  margin: 2px 0;
+  font-size: 11px;
+  line-height: 1.45;
+  color: #64748b;
+  word-break: break-all;
+}
+
+.compactGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 4px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.detailDivider {
+  padding: 8px 0 4px;
+  text-align: center;
+}
+
+.detailLabel {
+  font-size: 11px;
+  color: #94a3b8;
+  letter-spacing: 1px;
+}
+
+.compactSection {
+  padding: 16px;
+  background: #f8fafc;
+  box-shadow: none;
+  border: 1px solid #e2e8f0;
+}

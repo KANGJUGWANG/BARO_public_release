@@ -1,0 +1,20 @@
+path,line_or_context,keyword,classification,safe_to_publish,reason,action,notes
+.env.example,example variable placeholders,DB_/TOKEN,ALLOW_ENV_PLACEHOLDER,true,Example file contains symbolic names and placeholders only,KEEP,No real values
+configs/backend.env.example,example connection placeholder,DB/DATABASE,ALLOW_ENV_PLACEHOLDER,true,Example config uses placeholder connection string,KEEP,No real values
+configs/crawler.example.yaml,example connection placeholder,DB/DATABASE,ALLOW_ENV_PLACEHOLDER,true,Example config uses placeholder connection string,KEEP,No real values
+docker-compose.yml,environment variable substitution names,MYSQL,ALLOW_ENV_PLACEHOLDER,true,Docker compose references environment variable names only,KEEP,No real values
+frontend/android/keystore.properties.example,password placeholder text,PASSWORD,ALLOW_ENV_PLACEHOLDER,true,Example signing file uses placeholder labels only,KEEP,No keystore or real password
+backend/core/config.py,configuration variable names,.env/backend/DB/JWT/KAKAO,ALLOW_CODE_IDENTIFIER,true,Runtime reads symbolic environment names; no values are embedded,KEEP,Do not rename runtime contract here
+backend/scripts/refresh_route_analysis_snapshot.py,configuration variable names and error text,.env/backend/DB,ALLOW_CODE_IDENTIFIER,true,Script references symbolic environment names only,KEEP,No real values
+backend/scripts/refresh_route_analysis_snapshot_if_needed.py,configuration filename reference,.env,ALLOW_CODE_IDENTIFIER,true,Script references local env filename only,KEEP,No real values
+backend/auth/kakao.py,provider constants and request headers,KAKAO/Authorization/Bearer,ALLOW_CODE_IDENTIFIER,true,Standard OAuth/provider identifiers and HTTP auth scheme,KEEP,No real token
+backend/users/router.py,auth error/header examples,JWT/Authorization/Bearer,ALLOW_CODE_IDENTIFIER,true,Standard JWT exception/header terminology,KEEP,No real token
+frontend/src/api/client.js,HTTP authorization header handling,Authorization/Bearer,ALLOW_CODE_IDENTIFIER,true,Standard HTTP auth header construction,KEEP,No real token
+frontend/src/web/auth/kakao.js,provider key variable and request header,KAKAO/Authorization/Bearer,ALLOW_CODE_IDENTIFIER,true,Public client reads env key name and uses standard auth header,KEEP,No real key
+frontend/src/store/AuthContext.jsx,auth comment,JWT,ALLOW_DOC_EXPLANATION,true,Comment describes token handling without exposing token value,KEEP,No real token
+backend/ml_inference/oneway_adapter.py,false positive identifier,TOKEN,ALLOW_CODE_IDENTIFIER,true,BANNED_FEATURE_TOKENS is a feature-name guard identifier,KEEP,Not a secret token
+backend/ml_inference/roundtrip_adapter.py,false positive identifier,TOKEN,ALLOW_CODE_IDENTIFIER,true,BANNED_FEATURE_TOKENS is a feature-name guard identifier,KEEP,Not a secret token
+src/config/settings.py,environment variable names,MYSQL,ALLOW_CODE_IDENTIFIER,true,Configuration module references env var names only,KEEP,No real values
+src/utils/webhook.py,environment variable names and runtime command,MYSQL,ALLOW_CODE_IDENTIFIER,true,Webhook helper references env var names only,KEEP,No real values
+frontend/package-lock.json,dependency integrity hash false positive,JWT,ALLOW_LOCKFILE_HASH,true,Keyword appears inside package integrity hash text,KEEP,Not semantic content
+docs/*.md,security cleanup explanation keywords,SECRET/TOKEN/DB,ALLOW_DOC_EXPLANATION,true,Public cleanup docs discuss categories and redaction rules,KEEP,Do not include real values

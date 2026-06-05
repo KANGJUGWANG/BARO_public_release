@@ -1,0 +1,63 @@
+﻿# Environment and local secrets
+.env
+.env.*
+!.env.example
+backend/.env.backend
+frontend/android/keystore.properties
+release_keys/
+key_note.txt
+**/key_note.txt
+*.jks
+*.keystore
+
+# Model and data artifacts
+*.pkl
+*.parquet
+*.csv.gz
+*.db
+*.sqlite
+*.sql
+*.apk
+*.aab
+model_artifacts/
+finaltest_*/
+seedval_*/
+colab_*/
+data/
+outputs/
+logs/
+tmp/
+catboost_info/
+!data/
+!data/README.md
+!data/sample/
+!data/sample/README.md
+!data/sample/*.csv
+!outputs/
+!outputs/README.md
+!outputs/.gitkeep
+
+# Generated dependencies and build outputs
+node_modules/
+dist/
+build/
+frontend/android/app/build/
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.log
+*.tmp
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.vscod/
+.ipynb_checkpoints/
+
+# Local agent/private notes
+.claude/
+AGENTS.md

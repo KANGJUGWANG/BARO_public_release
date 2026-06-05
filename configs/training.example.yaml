@@ -1,0 +1,13 @@
+﻿training:
+  model_version: "finaltest_expc_full_final_v1_thr065"
+  oof_folds: 3
+  random_state: 42
+
+threshold:
+  oneway: 0.80
+  roundtrip: 0.65
+
+paths:
+  data_dir: "./data"
+  output_dir: "./outputs"
+  model_dir: "./models"

@@ -1,0 +1,114 @@
+/* DrawerMenu.module.css */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 200;
+}
+
+.drawer {
+  position: absolute;
+  top: 0;
+  left: -280px;
+  width: 280px;
+  height: 100%;
+  background: #ffffff;
+  z-index: 201;
+  transition: left 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0 24px rgba(0,0,0,0.15);
+}
+
+.open { left: 0; }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 16px;
+  background: var(--primary, #1A2B5E);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 3px;
+}
+
+.closeBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.15);
+}
+
+.userArea {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: #f0f4f8;
+  margin: 12px 12px 0;
+  border-radius: 12px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary, #1A2B5E);
+  opacity: 0.2;
+  flex-shrink: 0;
+}
+
+.userInfo { display: flex; flex-direction: column; gap: 2px; }
+
+.userName { font-size: 14px; font-weight: 600; color: #1e293b; }
+
+.userId { font-size: 11px; color: #94a3b8; }
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 16px 12px;
+  flex: 1;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 12px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #374151;
+  text-align: left;
+  transition: background 0.12s;
+}
+
+.item:hover { background: #f0f4f8; color: var(--primary, #1A2B5E); }
+
+.authArea { padding: 12px; border-top: 1px solid #f1f5f9; }
+
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 13px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ef4444;
+  background: #fef2f2;
+  transition: background 0.12s;
+}
+
+.logoutBtn:hover { background: #fee2e2; }

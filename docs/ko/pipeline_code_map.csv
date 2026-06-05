@@ -1,0 +1,36 @@
+﻿pipeline_stage,private_repo_path,public_repo_path,exists_in_public,public_release_action,reason,sensitive_risk,needs_refactor,notes
+crawler_parser,src/crawler/parser.py; backend/crawler/parser.py,backend/crawler/parser.py,true,keep_as_is,public repo has parser structure,medium,yes,remove any private source assumptions before pipeline docs
+crawler_collector,src/crawler/collector.py; backend/crawler/collector.py,backend/crawler/collector.py,true,copy_public_safe_version,collector may depend on runtime settings,high,yes,provide sample config only
+crawler_url_builder,src/crawler/url_builder.py; backend/crawler/url_builder.py,backend/crawler/url_builder.py,true,keep_as_is,url construction logic is useful,low,no,review external source terms
+loader_db_insert,src/loaders/gf_insert.py,src/loaders/gf_insert.py,true,document_only,DB insert requires private DB config,high,yes,do not expose real credentials
+db_connection,backend/core/db.py,backend/core/db.py,true,keep_as_is,DB pool code needed for backend,medium,no,public uses env placeholders
+config_settings,src/config/settings.py; backend/core/config.py,backend/core/config.py,true,keep_as_is,config loader needed,medium,no,only placeholders in examples
+feature_builder_oneway,backend/ml_inference/oneway_adapter.py,backend/ml_inference/oneway_adapter.py,true,keep_as_is,serving feature contract,low,no,model artifact excluded
+feature_builder_roundtrip,backend/ml_inference/roundtrip_feature_builder.py,backend/ml_inference/roundtrip_feature_builder.py,true,keep_as_is,roundtrip feature contract,low,no,model artifact excluded
+history_builder,backend/ml_inference/history.py,backend/ml_inference/history.py,true,keep_as_is,price history query logic,medium,no,requires DB for full run
+runtime_adapter,backend/ml_inference/model_runtime.py,backend/ml_inference/model_runtime.py,true,keep_as_is,model runtime contract,medium,no,model files excluded
+model_status,backend/ml_inference/model_status.py,backend/ml_inference/model_status.py,true,keep_as_is,model health metadata,low,no,only metadata shown
+label_design_docs,docs/modeling/label_design.md,docs/ko/project_decision_journey_v2.md,true,document_only,label definition described in docs,low,no,code source may be in training tools
+stage1_training,backend/tools/phase_16b_3b_full_retrain_final_refit.py,not included or review required,false,document_only,training requires private data and artifacts,high,yes,consider public skeleton later
+stage2_training,backend/tools/phase_16b_3b_full_retrain_final_refit.py,not included or review required,false,document_only,training requires private data and artifacts,high,yes,consider public skeleton later
+threshold_sweep,backend/tools/phase_16b_3c_baseline_threshold_review.py,not included or review required,false,document_only,threshold review depends on private outputs,high,yes,public docs include summary only
+artifact_packaging,backend/tools/phase_16b_3d_threshold_repackage.py,not included or review required,false,document_only,packaging manipulates model artifacts,high,yes,exclude real artifacts
+runtime_smoke,backend/tools/phase_16c_final_runtime_smoke.py; backend/ml_inference/smoke_server_oneway.py,backend/ml_inference/smoke_server_oneway.py; backend/ml_inference/smoke_server_roundtrip.py,true,create_placeholder_or_sample,public smoke should use mock/sample artifacts,medium,yes,avoid production endpoint calls
+live_switch_check,backend/tools/phase_16d_live_switch_check.py,not included or review required,false,document_only,live switch is operational only,high,yes,do not publish operational commands
+fastapi_entry,backend/main.py,backend/main.py,true,keep_as_is,backend app entrypoint,low,no,public config placeholders required
+flights_api,backend/flights/router.py; backend/flights/service.py,backend/flights/router.py; backend/flights/service.py,true,keep_as_is,candidate search API,medium,no,external source config private
+recommend_api,backend/recommend/router.py; backend/recommend/service.py,backend/recommend/router.py; backend/recommend/service.py,true,keep_as_is,recommendation API,medium,no,model/data excluded
+analyze_job,backend/recommend/job_store.py; backend/recommend/job_worker.py,backend/recommend/job_store.py; backend/recommend/job_worker.py,true,keep_as_is,batch prediction queue,low,no,public runtime needs artifacts
+refresh_jobs,backend/recommend/oneway_refresh_job.py; backend/recommend/roundtrip_refresh_job.py,backend/recommend/oneway_refresh_job.py; backend/recommend/roundtrip_refresh_job.py,true,keep_as_is,refresh job contract,medium,no,external source config private
+route_analysis,backend/recommend/route_analysis.py; backend/scripts/refresh_route_analysis_snapshot.py,backend/recommend/route_analysis.py; backend/scripts/refresh_route_analysis_snapshot.py,true,keep_as_is,route analysis snapshot logic,medium,no,requires DB data
+frontend_app,frontend/src/App.jsx,frontend/src/App.jsx,true,keep_as_is,route shell,low,no,none
+frontend_api_client,frontend/src/api/client.js,frontend/src/api/client.js,true,keep_as_is,API client,medium,no,base URL via env/config
+frontend_home,frontend/src/web/pages/HomePage.jsx,frontend/src/web/pages/HomePage.jsx,true,keep_as_is,search form UI,low,no,none
+frontend_search_result,frontend/src/web/pages/SearchResultPage.jsx,frontend/src/web/pages/SearchResultPage.jsx,true,keep_as_is,result list and prediction merge,low,no,none
+frontend_detail,frontend/src/web/pages/CardDetailPage.jsx,frontend/src/web/pages/CardDetailPage.jsx,true,keep_as_is,detail price trend and prediction reuse,low,no,none
+frontend_model_info,frontend/src/web/pages/ModelInfoPage.jsx,frontend/src/web/pages/ModelInfoPage.jsx,true,keep_as_is,model info UI,low,no,none
+frontend_cards,frontend/src/web/components/FlightCard.jsx; frontend/src/web/components/RoundTripCard.jsx,frontend/src/web/components/FlightCard.jsx; frontend/src/web/components/RoundTripCard.jsx,true,keep_as_is,BUY WAIT cards and gauge,low,no,none
+apk_capacitor_config,frontend/capacitor.config.json,frontend/capacitor.config.json,true,keep_as_is,Capacitor app config,medium,no,review app id only
+apk_android_project,frontend/android,frontend/android,true,keep_as_is,Android shell and resources,medium,no,keystore excluded
+release_signing_example,frontend/android/keystore.properties.example,frontend/android/keystore.properties.example,true,keep_as_is,example only,low,no,real signing file excluded
+systemd_deploy,deploy/systemd,deploy/systemd,true,document_only,operational deployment template,high,yes,public template should avoid real host assumptions

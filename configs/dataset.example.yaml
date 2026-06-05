@@ -1,0 +1,10 @@
+﻿data:
+  input_dir: "./data"
+  output_dir: "./outputs/dataset"
+  latest_usable_current_at: "2026-06-01 00:00:00"
+  label_horizon_hours: 72
+
+target:
+  exp_c:
+    min_drop_krw: 20000
+    min_drop_pct: 0.03

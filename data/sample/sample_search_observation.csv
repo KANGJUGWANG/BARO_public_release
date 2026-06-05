@@ -1,0 +1,3 @@
+﻿search_observation_id,observed_at,trip_type,origin,destination,departure_date,return_date,stay_nights
+1,2026-05-30 08:00:00,oneway,ICN,NRT,2026-06-20,,
+2,2026-05-30 08:00:00,roundtrip,ICN,NRT,2026-06-20,2026-06-27,7

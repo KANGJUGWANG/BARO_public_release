@@ -1,0 +1,264 @@
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  cursor: pointer;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+  transition: box-shadow 0.15s, transform 0.1s;
+  border: 1px solid #f1f5f9;
+}
+
+.card:hover {
+  box-shadow: 0 4px 20px rgba(26, 43, 94, 0.12);
+  transform: translateY(-1px);
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.airlineRow {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.airline {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.airlineLogo {
+  width: auto;
+  height: 28px;
+  max-width: 84px;
+  object-fit: contain;
+  margin-right: 4px;
+  flex-shrink: 0;
+}
+
+.airlineCodeBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 5px;
+  border: 1.5px solid;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  margin-right: 2px;
+  flex-shrink: 0;
+  background: #fff;
+}
+
+.directBadge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 20px;
+  background: #eef2ff;
+  color: var(--primary, #1A2B5E);
+}
+
+.buyTag {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: #d1fae5;
+  color: #059669;
+  letter-spacing: 0.05em;
+}
+
+.waitTag {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: #fef3c7;
+  color: #d97706;
+  letter-spacing: 0.05em;
+}
+
+.pendingTag {
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 20px;
+  background: #f1f5f9;
+  color: #94a3b8;
+}
+
+.priceDropGauge {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 9px 10px;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.gaugeHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #475569;
+}
+
+.gaugeHeader strong {
+  color: var(--primary, #1A2B5E);
+  font-size: 12px;
+}
+
+.gaugeTrack {
+  position: relative;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e2e8f0;
+}
+
+.gaugeFill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #60a5fa, #f59e0b);
+}
+
+.gaugeMarker {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 2px;
+  border-radius: 2px;
+  background: var(--primary, #1A2B5E);
+  transform: translateX(-1px);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.85);
+}
+
+.gaugeThresholdRow {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 10px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.flightInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.timeBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  min-width: 52px;
+}
+
+.time {
+  font-size: 22px;
+  font-weight: 800;
+  color: #1e293b;
+  letter-spacing: -0.5px;
+}
+
+.airportCode {
+  font-size: 13px;
+  color: #475569;
+  font-weight: 600;
+}
+
+.durationBlock {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.durationLine {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  flex-shrink: 0;
+}
+
+.dotArrow {
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 6px solid #cbd5e1;
+  flex-shrink: 0;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+.duration {
+  font-size: 13px;
+  color: #475569;
+  font-weight: 600;
+}
+
+.bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.priceLabel {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--primary, #1A2B5E);
+  letter-spacing: -0.5px;
+}
+
+.priceUnavailable {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: #fdecec;
+  color: #b45353;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.detailBtn {
+  font-size: 13px;
+  color: #94a3b8;
+}

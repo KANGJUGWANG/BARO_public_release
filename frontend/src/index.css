@@ -1,0 +1,103 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+
+  /* BARO 브랜드 색상 변수 — 전체 통일 */
+  --primary:       #1A2B5E;
+  --primary-dark:  #111e45;
+  --primary-light: #2a3f7e;
+  --accent:        #7EB3E8;
+  --bg:            #f0f4f8;
+  --surface:       #ffffff;
+  --text:          #1e293b;
+  --muted:         #94a3b8;
+}
+
+body {
+  min-height: 100%;
+  background: linear-gradient(145deg, #0d1b3e 0%, #1A2B5E 60%, #0d1b3e 100%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 32px 0 48px;
+}
+
+#root {
+  position: relative;
+  width: 390px;
+  height: calc(100dvh - 80px);
+  min-height: 680px;
+  max-height: 900px;
+  background: var(--bg);
+  border-radius: 44px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 0 0 10px #0d1b3e,
+    0 0 0 11px rgba(255,255,255,0.08),
+    0 40px 100px rgba(0,0,0,0.8),
+    inset 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+/* 모바일: 풍 충전, 프레임 없음 */
+html.native-app,
+html.native-app body,
+html.native-app #root {
+  width: 100%;
+  height: 100%;
+  min-height: 100dvh;
+  margin: 0;
+}
+
+html.native-app body {
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+html.native-app #root {
+  max-width: none;
+  max-height: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+@media (max-width: 440px) {
+  body {
+    background: var(--bg);
+    padding: 0;
+    align-items: stretch;
+  }
+  #root {
+    width: 100%;
+    height: 100dvh;
+    max-height: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+input, select {
+  font-family: inherit;
+  font-size: 1rem;
+}

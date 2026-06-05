@@ -1,0 +1,157 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+/* 트리거 버튼 */
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  background: #f8faff;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  width: 100%;
+  min-height: 45px;
+}
+
+.triggerOpen {
+  border-color: #2563EB;
+  background: #fff;
+}
+
+.triggerFilled {
+  border-color: #bfdbfe;
+  background: #eff6ff;
+}
+
+.triggerValue {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.triggerPlaceholder {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+/* 달력 패널 */
+.panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.15), 0 2px 8px rgba(0,0,0,0.08);
+  padding: 14px;
+  z-index: 50;
+  border: 1px solid #e2e8f0;
+}
+
+/* 네비게이션 */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.navBtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.12s;
+}
+
+.navBtn:hover {
+  background: #e2e8f0;
+}
+
+.navTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* 요일 */
+.weekRow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 6px;
+}
+
+.weekDay {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: #94a3b8;
+  padding: 4px 0;
+}
+
+.sun { color: #ef4444; }
+.sat { color: #2563EB; }
+
+/* 날짜 그리드 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1e293b;
+  background: transparent;
+  transition: background 0.1s, color 0.1s;
+  cursor: pointer;
+}
+
+.cell:hover:not(.disabled):not(.empty) {
+  background: #eff6ff;
+  color: #2563EB;
+}
+
+.empty {
+  cursor: default;
+}
+
+.disabled {
+  color: #cbd5e1;
+  cursor: not-allowed;
+}
+
+.today {
+  font-weight: 700;
+  color: #2563EB;
+  background: #eff6ff;
+}
+
+.selected {
+  background: #2563EB !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
+}

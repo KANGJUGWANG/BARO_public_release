@@ -1,0 +1,14 @@
+﻿source:
+  provider: "example"
+  base_url: "<FLIGHT_SEARCH_SOURCE>"
+  request_interval_seconds: 5
+
+storage:
+  database_url: "<DB_CONNECTION_STRING>"
+  output_dir: "./data"
+
+routes:
+  - origin: "ICN"
+    destination: "NRT"
+  - origin: "ICN"
+    destination: "HND"

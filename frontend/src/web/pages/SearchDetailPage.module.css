@@ -1,0 +1,134 @@
+/* SearchDetailPage.module.css */
+.page {
+  min-height: 100%;
+  background: var(--bg, #f0f4f8);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px;
+  background: var(--primary, #1A2B5E);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.backBtn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.main {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+.section {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(26,43,94,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sectionTitle {
+  font-size: 15px;
+  color: var(--primary, #1A2B5E);
+  font-weight: 800;
+  text-transform: none;
+  letter-spacing: 0;
+  margin-bottom: 2px;
+  padding-left: 10px;
+  border-left: 3px solid var(--primary, #1A2B5E);
+}
+
+.emptyBox {
+  padding: 20px;
+  background: #f0f4f8;
+  border-radius: 12px;
+  text-align: center;
+  color: var(--muted, #94a3b8);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.priceDropGauge {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.gaugeHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #475569;
+}
+
+.gaugeHeader strong {
+  color: var(--primary, #1A2B5E);
+  font-size: 13px;
+}
+
+.gaugeTrack {
+  position: relative;
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e2e8f0;
+}
+
+.gaugeFill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #60a5fa, #f59e0b);
+}
+
+.gaugeMarker {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 2px;
+  border-radius: 2px;
+  background: var(--primary, #1A2B5E);
+  transform: translateX(-1px);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.85);
+}
+
+.gaugeThresholdRow {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 10px;
+  font-weight: 800;
+  color: #64748b;
+}

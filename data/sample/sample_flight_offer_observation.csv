@@ -1,0 +1,3 @@
+﻿offer_observation_id,search_observation_id,flight_number,ret_flight_number,airline_code,ret_airline_code,price_krw,dep_time_local,arr_time_local,duration_min,ret_dep_time_local,ret_arr_time_local,ret_duration_min
+101,1,EX101,,EX,,180000,09:00,11:20,140,,,
+201,2,EX201,EX202,EX,EX,360000,10:00,12:30,150,18:00,20:30,150

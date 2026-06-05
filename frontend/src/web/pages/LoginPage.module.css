@@ -1,0 +1,78 @@
+/* LoginPage.module.css — 반응형 로그인 화면 */
+.page {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #1A2B5E;
+  padding: 0 24px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.top {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 34px 0 12px;
+}
+
+.logoImg {
+  width: clamp(220px, 64vw, 290px);
+  max-width: 86%;
+  max-height: 42vh;
+  height: auto;
+  object-fit: contain;
+}
+
+.desc {
+  font-size: 22px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.94);
+  margin-top: 0;
+  text-align: center;
+  letter-spacing: -0.45px;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 28px;
+}
+
+.kakaoBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 15px;
+  background: #FEE500;
+  color: #191919;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: -0.2px;
+}
+
+.kakaoIcon {
+  font-size: 18px;
+}
+
+.demoBtn {
+  width: 100%;
+  padding: 14px;
+  background: rgba(255,255,255,0.12);
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.32);
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}

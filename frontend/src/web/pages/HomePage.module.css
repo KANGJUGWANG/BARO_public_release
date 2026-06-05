@@ -1,0 +1,275 @@
+/* HomePage 선택 드롭다운 커스텀 스타일 포함 */
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: #f0f4f8;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: var(--primary, #1A2B5E);
+  flex-shrink: 0;
+}
+
+.menuBtn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.15);
+}
+
+.analysisBtn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.15);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 2px;
+}
+
+.hero {
+  background: var(--primary, #1A2B5E);
+  padding: 28px 24px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.heroTitle {
+  font-size: 26px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.35;
+  letter-spacing: -0.5px;
+}
+
+.heroSub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+}
+
+.card {
+  margin: -36px 16px 24px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(26,43,94,0.14);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.tripToggle {
+  display: flex;
+  background: #f1f5f9;
+  border-radius: 8px;
+  padding: 3px;
+  gap: 3px;
+}
+
+.toggleActive {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  background: var(--primary, #1A2B5E);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.toggleInactive {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  background: transparent;
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* 공항 선택 영역 */
+.airportRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f0f4f8;
+  border-radius: 12px;
+  padding: 6px;
+}
+
+.airportBox {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 12px 8px;
+  position: relative;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.airportLabel {
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* select 커스텀 스타일 */
+.selectWrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.airportSelect {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  text-align: center;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  padding: 0 4px;
+  opacity: 0;
+}
+
+.selectArrow {
+  display: none;
+}
+
+.airportCode {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--primary, #1A2B5E);
+  letter-spacing: -0.5px;
+}
+
+.swapBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+
+.swapBtn:hover { transform: rotate(180deg); }
+
+.dateRow {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.dateRow > * { flex: 1; }
+
+.dateRowRound {
+  flex-direction: column;
+}
+
+.returnDateWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.returnDateDisplay {
+  min-height: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12px 14px;
+  border: 1.5px solid #d7e3f4;
+  border-radius: 10px;
+  background: #f8fbff;
+  cursor: default;
+  user-select: none;
+}
+
+.returnDateLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.returnDateValue {
+  font-size: 14px;
+  font-weight: 800;
+  color: #1e293b;
+}
+
+.hint {
+  font-size: 12px;
+  color: #f59e0b;
+  font-weight: 500;
+  margin-top: -8px;
+}
+
+.searchBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 15px;
+  background: var(--primary, #1A2B5E);
+  color: #ffffff;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  transition: opacity 0.15s, transform 0.1s;
+  box-shadow: 0 4px 12px rgba(26,43,94,0.3);
+}
+
+.searchBtn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.searchBtn:active { transform: translateY(0); }
+
+.searchBtn:disabled {
+  background: #cbd5e1;
+  box-shadow: none;
+  transform: none;
+  cursor: not-allowed;
+}

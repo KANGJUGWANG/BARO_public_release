@@ -1,0 +1,481 @@
+.page {
+  min-height: 100%;
+  background: var(--bg, #f0f4f8);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px;
+  background: var(--primary, #1A2B5E);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.backBtn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.15);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.saveBtn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.15);
+}
+
+.main {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+/* 가격 카드 */
+.priceCard {
+  background: var(--primary, #1A2B5E);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow: hidden;
+}
+
+.airlineIdentity {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.96);
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.returnAirlineIdentity {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.92);
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 3px;
+}
+
+.airlineLogo {
+  width: auto;
+  height: 32px;
+  max-width: 112px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.airlineLogoSmall {
+  width: auto;
+  height: 26px;
+  max-width: 88px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.airlineCodeBadge,
+.airlineCodeBadgeSmall {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid;
+  border-radius: 4px;
+  background: #fff;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.airlineCodeBadge {
+  min-width: 32px;
+  height: 32px;
+  padding: 0 6px;
+  font-size: 11px;
+}
+
+.airlineCodeBadgeSmall {
+  min-width: 26px;
+  height: 24px;
+  padding: 0 5px;
+  font-size: 10px;
+}
+
+.priceLabel {
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.price {
+  font-size: 30px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+
+.segmentInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.segRoute {
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+  font-weight: 600;
+}
+
+.segTime {
+  font-size: 13px;
+  color: rgba(255,255,255,0.68);
+}
+
+.segPrice {
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.segDivider {
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+  margin: 6px 0;
+  border-style: dashed;
+  border-width: 0 0 1px;
+  border-color: rgba(255,255,255,0.2);
+}
+
+/* 저장 버튼 */
+.saveFlightBtn {
+  padding: 13px;
+  border-radius: 12px;
+  background: #fff;
+  color: var(--primary, #1A2B5E);
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  border: 2px solid var(--primary, #1A2B5E);
+  transition: background 0.15s;
+}
+
+.saveFlightBtn:hover {
+  background: #eef2ff;
+}
+
+.savedBtn {
+  padding: 13px;
+  border-radius: 12px;
+  background: #f0f4f8;
+  color: #94a3b8;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  border: 2px solid #e2e8f0;
+  cursor: default;
+}
+
+/* 구매 판단 */
+.judgmentCard {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(26,43,94,0.08);
+}
+
+.judgmentLabel {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 7px;
+  background: #f0f4ff;
+  font-size: 12px;
+  color: #1e293b;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.judgmentEmpty {
+  padding: 20px;
+  background: #f0f4f8;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.emptyTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary, #1A2B5E);
+}
+
+.emptyDesc {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* 가격 추이 */
+.chartCard {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(26,43,94,0.08);
+}
+
+.chartLabel {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 7px;
+  background: #f0f4ff;
+  font-size: 12px;
+  color: #1e293b;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.chartEmpty {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f4f8;
+  border-radius: 12px;
+}
+
+.judgmentResult {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 0;
+}
+
+.buyBadge {
+  display: inline-block;
+  padding: 10px 28px;
+  border-radius: 100px;
+  background: #22c55e;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+.waitBadge {
+  display: inline-block;
+  padding: 10px 28px;
+  border-radius: 100px;
+  background: #f59e0b;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+.recommendationHelp {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 600;
+  margin: 0;
+}
+
+.priceDropGauge {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.gaugeHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #475569;
+}
+
+.gaugeHeader strong {
+  color: var(--primary, #1A2B5E);
+  font-size: 14px;
+}
+
+.gaugeTrack {
+  position: relative;
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e2e8f0;
+}
+
+.gaugeFill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #60a5fa, #f59e0b);
+}
+
+.gaugeMarker {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 2px;
+  border-radius: 2px;
+  background: var(--primary, #1A2B5E);
+  transform: translateX(-1px);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.85);
+}
+
+.gaugeThresholdRow {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 10px;
+  font-weight: 800;
+  color: #64748b;
+}
+
+.gaugeHelp {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #64748b;
+}
+
+.historyChart {
+  width: 100%;
+  height: 142px;
+  display: block;
+  background: #f0f4f8;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.chartHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.chartSubLabel,
+.chartUnitLabel,
+.chartDirectionRow {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.chartDirectionRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: -4px 2px 12px;
+}
+
+.chartDirectionLine {
+  flex: 1;
+  height: 1px;
+  background: #cbd5e1;
+}
+
+.historyLine {
+  fill: none;
+  stroke: var(--primary, #1A2B5E);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.historyGridLine {
+  stroke: #dbe4ef;
+  stroke-width: 1;
+}
+
+.historyAxisLabel {
+  fill: #64748b;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.historyAxisTitle {
+  fill: #94a3b8;
+  font-size: 9px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+.historySummary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.historySummaryItem {
+  padding: 10px;
+  border-radius: 10px;
+  background: #f0f4f8;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.historySummaryLabel {
+  font-size: 11px;
+  color: var(--muted, #94a3b8);
+  font-weight: 700;
+}
+
+.historySummaryValue {
+  font-size: 13px;
+  color: var(--primary, #1A2B5E);
+  font-weight: 800;
+}

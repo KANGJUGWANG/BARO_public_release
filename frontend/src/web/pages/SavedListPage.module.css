@@ -1,0 +1,125 @@
+.page {
+  min-height: 100%;
+  background: var(--bg, #f0f4f8);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: var(--primary, #1A2B5E);
+}
+
+.backBtn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+.title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.main {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.emptyState {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.emptyIcon { font-size: 40px; opacity: 0.4; }
+
+.emptyTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text, #1e293b);
+}
+
+.emptyDesc {
+  font-size: 13px;
+  color: var(--muted, #94a3b8);
+  line-height: 1.6;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(26,43,94,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.cardLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.routeLabel {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--primary, #1A2B5E);
+}
+
+.roundBadge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 20px;
+  background: #eef2ff;
+  color: var(--primary, #1A2B5E);
+}
+
+.airline {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text, #1e293b);
+}
+
+.meta {
+  font-size: 12px;
+  color: var(--muted, #94a3b8);
+}
+
+.deleteBtn {
+  color: #ef4444;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: #fef2f2;
+  font-weight: 600;
+  flex-shrink: 0;
+}
