@@ -1,0 +1,201 @@
+{
+  "schema_version": "1.1.0",
+  "default_tier": "minimal-repro",
+  "selector_contract_version": "phase3.6-c4.1h-selector-v1",
+  "tiers": [
+    {
+      "name": "minimal-repro",
+      "default": true,
+      "selectors": [
+        {
+          "selector_id": "minimal_icn_nrt_oneway_2026_08_13",
+          "route_type": "oneway",
+          "origin_iata": "ICN",
+          "destination_iata": "NRT",
+          "departure_date": "2026-08-13",
+          "return_date": null,
+          "stay_nights": null,
+          "history_limit": 40,
+          "minimum_history_rows": 7,
+          "include_all_linked_offers": true,
+          "required": true
+        },
+        {
+          "selector_id": "minimal_icn_nrt_roundtrip_2026_08_13_2026_08_20",
+          "route_type": "roundtrip",
+          "origin_iata": "ICN",
+          "destination_iata": "NRT",
+          "departure_date": "2026-08-13",
+          "return_date": "2026-08-20",
+          "stay_nights": 7,
+          "history_limit": 40,
+          "minimum_history_rows": 7,
+          "include_all_linked_offers": true,
+          "required": true
+        }
+      ],
+      "limits": {
+        "max_search_rows": 120,
+        "max_offer_rows": 20000,
+        "max_optional_rows": 8,
+        "max_total_rows": 20128,
+        "max_uncompressed_bytes": 25000000,
+        "max_compressed_bytes": 8000000,
+        "max_selectors": 2,
+        "max_history_limit_per_selector": 60
+      },
+      "include_route_snapshot": false,
+      "implementation_status": "bounded_selector_enforced"
+    },
+    {
+      "name": "extended-repro",
+      "default": false,
+      "selectors": [
+        {
+          "selector_id": "extended_icn_nrt_oneway_2026_08_13",
+          "route_type": "oneway",
+          "origin_iata": "ICN",
+          "destination_iata": "NRT",
+          "departure_date": "2026-08-13",
+          "return_date": null,
+          "stay_nights": null,
+          "history_limit": 30,
+          "minimum_history_rows": 7,
+          "include_all_linked_offers": true,
+          "required": true
+        },
+        {
+          "selector_id": "extended_nrt_icn_oneway_2026_08_13",
+          "route_type": "oneway",
+          "origin_iata": "NRT",
+          "destination_iata": "ICN",
+          "departure_date": "2026-08-13",
+          "return_date": null,
+          "stay_nights": null,
+          "history_limit": 30,
+          "minimum_history_rows": 7,
+          "include_all_linked_offers": true,
+          "required": true
+        },
+        {
+          "selector_id": "extended_icn_hnd_oneway_2026_08_13",
+          "route_type": "oneway",
+          "origin_iata": "ICN",
+          "destination_iata": "HND",
+          "departure_date": "2026-08-13",
+          "return_date": null,
+          "stay_nights": null,
+          "history_limit": 30,
+          "minimum_history_rows": 7,
+          "include_all_linked_offers": true,
+          "required": true
+        },
+        {
+          "selector_id": "extended_hnd_icn_oneway_2026_08_13",
+          "route_type": "oneway",
+          "origin_iata": "HND",
+          "destination_iata": "ICN",
+          "departure_date": "2026-08-13",
+          "return_date": null,
+          "stay_nights": null,
+          "history_limit": 30,
+          "minimum_history_rows": 7,
+          "include_all_linked_offers": true,
+          "required": true
+        },
+        {
+          "selector_id": "extended_icn_nrt_roundtrip_2026_08_13_2026_08_20",
+          "route_type": "roundtrip",
+          "origin_iata": "ICN",
+          "destination_iata": "NRT",
+          "departure_date": "2026-08-13",
+          "return_date": "2026-08-20",
+          "stay_nights": 7,
+          "history_limit": 30,
+          "minimum_history_rows": 7,
+          "include_all_linked_offers": true,
+          "required": true
+        },
+        {
+          "selector_id": "extended_nrt_icn_roundtrip_2026_08_13_2026_08_20",
+          "route_type": "roundtrip",
+          "origin_iata": "NRT",
+          "destination_iata": "ICN",
+          "departure_date": "2026-08-13",
+          "return_date": "2026-08-20",
+          "stay_nights": 7,
+          "history_limit": 30,
+          "minimum_history_rows": 7,
+          "include_all_linked_offers": true,
+          "required": true
+        },
+        {
+          "selector_id": "extended_icn_hnd_roundtrip_2026_08_13_2026_08_20",
+          "route_type": "roundtrip",
+          "origin_iata": "ICN",
+          "destination_iata": "HND",
+          "departure_date": "2026-08-13",
+          "return_date": "2026-08-20",
+          "stay_nights": 7,
+          "history_limit": 30,
+          "minimum_history_rows": 7,
+          "include_all_linked_offers": true,
+          "required": true
+        },
+        {
+          "selector_id": "extended_hnd_icn_roundtrip_2026_08_13_2026_08_20",
+          "route_type": "roundtrip",
+          "origin_iata": "HND",
+          "destination_iata": "ICN",
+          "departure_date": "2026-08-13",
+          "return_date": "2026-08-20",
+          "stay_nights": 7,
+          "history_limit": 30,
+          "minimum_history_rows": 7,
+          "include_all_linked_offers": true,
+          "required": true
+        }
+      ],
+      "limits": {
+        "max_search_rows": 320,
+        "max_offer_rows": 80000,
+        "max_optional_rows": 32,
+        "max_total_rows": 80352,
+        "max_uncompressed_bytes": 100000000,
+        "max_compressed_bytes": 32000000,
+        "max_selectors": 8,
+        "max_history_limit_per_selector": 40
+      },
+      "include_route_snapshot": true,
+      "implementation_status": "bounded_selector_enforced"
+    }
+  ],
+  "required_tables": [
+    "search_observation",
+    "flight_offer_observation"
+  ],
+  "optional_tables": [
+    "service_route_analysis_snapshot"
+  ],
+  "excluded_tables": [
+    "capture_file_log",
+    "users",
+    "auth",
+    "token",
+    "session",
+    "bookmark",
+    "settings"
+  ],
+  "sanitization": {
+    "search_observation.search_url": "<REDACTED_SEARCH_URL>",
+    "search_observation.raw_file_path": null,
+    "forbidden_patterns": [
+      "http://",
+      "https://",
+      "/home/",
+      "C:\\\\Users\\\\",
+      "10.145.",
+      "134.185."
+    ]
+  }
+}

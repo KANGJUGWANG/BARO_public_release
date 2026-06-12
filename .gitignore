@@ -2,6 +2,7 @@
 .env
 .env.*
 !.env.example
+!.env.repro.example
 backend/.env.backend
 frontend/android/keystore.properties
 release_keys/

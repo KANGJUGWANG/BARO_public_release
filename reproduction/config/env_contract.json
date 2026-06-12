@@ -1,0 +1,692 @@
+{
+    "schema_version":  "1.0.0",
+    "variables":  [
+                      {
+                          "name":  "COMPOSE_PROJECT_NAME",
+                          "component":  "compose",
+                          "description":  "Local Compose project name.",
+                          "secret":  false,
+                          "required":  true,
+                          "profiles":  [
+                                           "local-full"
+                                       ],
+                          "source":  "generated",
+                          "default":  "baro-repro",
+                          "example_placeholder":  "baro-repro",
+                          "validation":  "compose project identifier",
+                          "generated":  true,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "REPRO_PROFILE",
+                          "component":  "all",
+                          "description":  "Selected reproduction profile.",
+                          "secret":  false,
+                          "required":  true,
+                          "profiles":  [
+                                           "all"
+                                       ],
+                          "source":  "user",
+                          "default":  "local-full",
+                          "example_placeholder":  "local-full",
+                          "validation":  "enum",
+                          "generated":  false,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "ARTIFACT_PROVIDER",
+                          "component":  "artifact",
+                          "description":  "Artifact provider strategy.",
+                          "secret":  false,
+                          "required":  true,
+                          "profiles":  [
+                                           "local-full"
+                                       ],
+                          "source":  "user",
+                          "default":  "rclone-private",
+                          "example_placeholder":  "rclone-private",
+                          "validation":  "enum",
+                          "generated":  false,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "ARTIFACT_BUNDLE_VERSION",
+                          "component":  "artifact",
+                          "description":  "Versioned model bundle identifier.",
+                          "secret":  false,
+                          "required":  true,
+                          "profiles":  [
+                                           "local-full"
+                                       ],
+                          "source":  "user",
+                          "default":  null,
+                          "example_placeholder":  "\u003cUSER_INPUT\u003e",
+                          "validation":  "non-empty",
+                          "generated":  false,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "ARTIFACT_ROOT",
+                          "component":  "artifact",
+                          "description":  "Local restored artifact root.",
+                          "secret":  false,
+                          "required":  true,
+                          "profiles":  [
+                                           "local-full",
+                                           "split-server"
+                                       ],
+                          "source":  "derived",
+                          "default":  "./reproduction/artifacts/extracted/\u003cARTIFACT_BUNDLE_VERSION\u003e",
+                          "example_placeholder":  "./reproduction/artifacts/extracted/\u003cARTIFACT_BUNDLE_VERSION\u003e",
+                          "validation":  "relative path",
+                          "generated":  true,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "RCLONE_REMOTE",
+                          "component":  "artifact",
+                          "description":  "Optional private rclone remote.",
+                          "secret":  true,
+                          "required":  false,
+                          "profiles":  [
+                                           "local-full"
+                                       ],
+                          "source":  "external_console",
+                          "default":  null,
+                          "example_placeholder":  "\u003cUSER_INPUT_OPTIONAL\u003e",
+                          "validation":  "optional",
+                          "generated":  false,
+                          "persist":  false,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "FRONTEND_HOST_PORT",
+                          "component":  "frontend",
+                          "description":  "Host port for local Nginx frontend.",
+                          "secret":  false,
+                          "required":  true,
+                          "profiles":  [
+                                           "local-full"
+                                       ],
+                          "source":  "generated",
+                          "default":  "8080",
+                          "example_placeholder":  "8080",
+                          "validation":  "port",
+                          "generated":  true,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "BACKEND_DIAGNOSTIC_PORT",
+                          "component":  "backend",
+                          "description":  "Optional backend diagnostic host port.",
+                          "secret":  false,
+                          "required":  false,
+                          "profiles":  [
+                                           "local-full",
+                                           "split-server"
+                                       ],
+                          "source":  "user",
+                          "default":  null,
+                          "example_placeholder":  "\u003cUSER_INPUT_OPTIONAL\u003e",
+                          "validation":  "port",
+                          "generated":  false,
+                          "persist":  false,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "DB_HOST",
+                          "component":  "database",
+                          "description":  "Database host or Compose service alias.",
+                          "secret":  false,
+                          "required":  true,
+                          "profiles":  [
+                                           "local-full",
+                                           "split-server",
+                                           "refresh"
+                                       ],
+                          "source":  "derived",
+                          "default":  "mysql",
+                          "example_placeholder":  "mysql",
+                          "validation":  "hostname",
+                          "generated":  true,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "DB_PORT",
+                          "component":  "database",
+                          "description":  "Database internal port.",
+                          "secret":  false,
+                          "required":  true,
+                          "profiles":  [
+                                           "local-full",
+                                           "split-server",
+                                           "refresh"
+                                       ],
+                          "source":  "derived",
+                          "default":  "3306",
+                          "example_placeholder":  "3306",
+                          "validation":  "port",
+                          "generated":  true,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "DB_NAME",
+                          "component":  "database",
+                          "description":  "Reproduction database name.",
+                          "secret":  false,
+                          "required":  true,
+                          "profiles":  [
+                                           "local-full",
+                                           "split-server",
+                                           "refresh"
+                                       ],
+                          "source":  "generated",
+                          "default":  "baro_repro",
+                          "example_placeholder":  "baro_repro",
+                          "validation":  "identifier",
+                          "generated":  true,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "DB_USER",
+                          "component":  "database",
+                          "description":  "Application database user.",
+                          "secret":  false,
+                          "required":  true,
+                          "profiles":  [
+                                           "local-full",
+                                           "split-server",
+                                           "refresh"
+                                       ],
+                          "source":  "generated",
+                          "default":  "baro_repro_user",
+                          "example_placeholder":  "baro_repro_user",
+                          "validation":  "identifier",
+                          "generated":  true,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "DB_PASSWORD",
+                          "component":  "database",
+                          "description":  "Application database password.",
+                          "secret":  true,
+                          "required":  true,
+                          "profiles":  [
+                                           "local-full",
+                                           "split-server",
+                                           "refresh"
+                                       ],
+                          "source":  "generated",
+                          "default":  null,
+                          "example_placeholder":  "\u003cGENERATE_ON_BOOTSTRAP\u003e",
+                          "validation":  "secret",
+                          "generated":  true,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "MYSQL_ROOT_PASSWORD",
+                          "component":  "database",
+                          "description":  "MySQL root password.",
+                          "secret":  true,
+                          "required":  true,
+                          "profiles":  [
+                                           "local-full"
+                                       ],
+                          "source":  "generated",
+                          "default":  null,
+                          "example_placeholder":  "\u003cGENERATE_ON_BOOTSTRAP\u003e",
+                          "validation":  "secret",
+                          "generated":  true,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "SNAPSHOT_TIER",
+                          "component":  "database",
+                          "description":  "Selected DB snapshot tier.",
+                          "secret":  false,
+                          "required":  true,
+                          "profiles":  [
+                                           "local-full"
+                                       ],
+                          "source":  "user",
+                          "default":  "minimal-repro",
+                          "example_placeholder":  "minimal-repro",
+                          "validation":  "enum",
+                          "generated":  false,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "MODEL_BUNDLE_SUBDIR",
+                          "component":  "artifact",
+                          "description":  "Model artifact subdirectory under models/ inside the private bundle.",
+                          "secret":  false,
+                          "required":  true,
+                          "profiles":  [
+                                           "local-full",
+                                           "split-server"
+                                       ],
+                          "source":  "derived",
+                          "default":  "baro-runtime-v1",
+                          "example_placeholder":  "baro-runtime-v1",
+                          "validation":  "non-empty",
+                          "generated":  true,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "MODEL_DIR",
+                          "component":  "backend",
+                          "description":  "Container-visible model directory.",
+                          "secret":  false,
+                          "required":  true,
+                          "profiles":  [
+                                           "local-full",
+                                           "split-server"
+                                       ],
+                          "source":  "derived",
+                          "default":  "/app/runtime/models",
+                          "example_placeholder":  "/app/runtime/models",
+                          "validation":  "container path",
+                          "generated":  true,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "JWT_SECRET",
+                          "component":  "backend",
+                          "description":  "Local reproduction JWT signing secret.",
+                          "secret":  true,
+                          "required":  true,
+                          "profiles":  [
+                                           "local-full",
+                                           "split-server"
+                                       ],
+                          "source":  "generated",
+                          "default":  null,
+                          "example_placeholder":  "\u003cGENERATE_ON_BOOTSTRAP\u003e",
+                          "validation":  "secret",
+                          "generated":  true,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "ALLOWED_ORIGINS",
+                          "component":  "backend",
+                          "description":  "Backend CORS origins used by current code.",
+                          "secret":  false,
+                          "required":  true,
+                          "profiles":  [
+                                           "local-full",
+                                           "split-server",
+                                           "hosted-frontend"
+                                       ],
+                          "source":  "derived",
+                          "default":  "http://localhost:8080",
+                          "example_placeholder":  "http://localhost:8080",
+                          "validation":  "origin list",
+                          "generated":  true,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "FRONTEND_URL",
+                          "component":  "backend",
+                          "description":  "Backend login callback return origin used by current code.",
+                          "secret":  false,
+                          "required":  true,
+                          "profiles":  [
+                                           "local-full",
+                                           "split-server",
+                                           "hosted-frontend"
+                                       ],
+                          "source":  "derived",
+                          "default":  "http://localhost:8080",
+                          "example_placeholder":  "http://localhost:8080",
+                          "validation":  "origin",
+                          "generated":  true,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "PUBLIC_BACKEND_ORIGIN",
+                          "component":  "backend",
+                          "description":  "Optional backend origin for split-server or hosted frontend.",
+                          "secret":  false,
+                          "required":  false,
+                          "profiles":  [
+                                           "split-server",
+                                           "hosted-frontend"
+                                       ],
+                          "source":  "user",
+                          "default":  null,
+                          "example_placeholder":  "\u003cUSER_INPUT_OPTIONAL\u003e",
+                          "validation":  "user supplied",
+                          "generated":  false,
+                          "persist":  false,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "VITE_BACKEND_URL",
+                          "component":  "frontend",
+                          "description":  "Frontend API base URL or relative prefix.",
+                          "secret":  false,
+                          "required":  true,
+                          "profiles":  [
+                                           "local-full",
+                                           "hosted-frontend"
+                                       ],
+                          "source":  "derived",
+                          "default":  "/api",
+                          "example_placeholder":  "/api",
+                          "validation":  "relative URL",
+                          "generated":  true,
+                          "persist":  true,
+                          "expose_to_frontend":  true
+                      },
+                      {
+                          "name":  "VITE_KAKAO_JS_KEY",
+                          "component":  "frontend",
+                          "description":  "Optional Kakao JavaScript key.",
+                          "secret":  true,
+                          "required":  false,
+                          "profiles":  [
+                                           "hosted-frontend",
+                                           "split-server"
+                                       ],
+                          "source":  "external_console",
+                          "default":  null,
+                          "example_placeholder":  "\u003cUSER_INPUT_OPTIONAL\u003e",
+                          "validation":  "optional",
+                          "generated":  false,
+                          "persist":  false,
+                          "expose_to_frontend":  true
+                      },
+                      {
+                          "name":  "KAKAO_REST_API_KEY",
+                          "component":  "backend",
+                          "description":  "Optional Kakao REST API key.",
+                          "secret":  true,
+                          "required":  false,
+                          "profiles":  [
+                                           "hosted-frontend",
+                                           "split-server"
+                                       ],
+                          "source":  "external_console",
+                          "default":  null,
+                          "example_placeholder":  "\u003cUSER_INPUT_OPTIONAL\u003e",
+                          "validation":  "optional",
+                          "generated":  false,
+                          "persist":  false,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "KAKAO_REDIRECT_URI",
+                          "component":  "backend",
+                          "description":  "Optional Kakao redirect URI.",
+                          "secret":  false,
+                          "required":  false,
+                          "profiles":  [
+                                           "hosted-frontend",
+                                           "split-server"
+                                       ],
+                          "source":  "derived",
+                          "default":  null,
+                          "example_placeholder":  "\u003cDERIVED_FROM_PUBLIC_ORIGIN\u003e",
+                          "validation":  "derived",
+                          "generated":  true,
+                          "persist":  false,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "VITE_INTERNAL_APP_SHARING_URL",
+                          "component":  "frontend",
+                          "description":  "Optional internal app sharing URL used by current frontend config.",
+                          "secret":  false,
+                          "required":  false,
+                          "profiles":  [
+                                           "hosted-frontend"
+                                       ],
+                          "source":  "external_console",
+                          "default":  null,
+                          "example_placeholder":  "\u003cUSER_INPUT_OPTIONAL\u003e",
+                          "validation":  "optional",
+                          "generated":  false,
+                          "persist":  false,
+                          "expose_to_frontend":  true
+                      },
+                      {
+                          "name":  "VITE_APK_SHA256",
+                          "component":  "frontend",
+                          "description":  "Optional APK checksum env name used by current frontend config.",
+                          "secret":  false,
+                          "required":  false,
+                          "profiles":  [
+                                           "hosted-frontend"
+                                       ],
+                          "source":  "artifact_manifest",
+                          "default":  null,
+                          "example_placeholder":  "\u003cUSER_INPUT_OPTIONAL\u003e",
+                          "validation":  "sha256",
+                          "generated":  false,
+                          "persist":  false,
+                          "expose_to_frontend":  true
+                      },
+                      {
+                          "name":  "ARTIFACT_SOURCE",
+                          "component":  "artifact",
+                          "description":  "Artifact source path or private rclone remote path placeholder.",
+                          "secret":  false,
+                          "required":  false,
+                          "profiles":  [
+                                           "local-full"
+                                       ],
+                          "source":  "user",
+                          "default":  null,
+                          "example_placeholder":  "\u003cUSER_INPUT_OPTIONAL\u003e",
+                          "validation":  "optional",
+                          "generated":  false,
+                          "persist":  false,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "ARTIFACT_MANIFEST_PATH",
+                          "component":  "artifact",
+                          "description":  "Optional explicit artifact manifest path.",
+                          "secret":  false,
+                          "required":  false,
+                          "profiles":  [
+                                           "local-full"
+                                       ],
+                          "source":  "user",
+                          "default":  null,
+                          "example_placeholder":  "\u003cUSER_INPUT_OPTIONAL\u003e",
+                          "validation":  "optional",
+                          "generated":  false,
+                          "persist":  false,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "ARTIFACT_MANIFEST_SHA256",
+                          "component":  "artifact",
+                          "description":  "Optional pinned manifest SHA-256.",
+                          "secret":  false,
+                          "required":  false,
+                          "profiles":  [
+                                           "local-full"
+                                       ],
+                          "source":  "user",
+                          "default":  null,
+                          "example_placeholder":  "\u003cUSER_INPUT_OPTIONAL\u003e",
+                          "validation":  "optional",
+                          "generated":  false,
+                          "persist":  false,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "ARTIFACT_CATEGORY",
+                          "component":  "artifact",
+                          "description":  "Artifact category to fetch or verify.",
+                          "secret":  false,
+                          "required":  true,
+                          "profiles":  [
+                                           "local-full"
+                                       ],
+                          "source":  "user",
+                          "default":  "models",
+                          "example_placeholder":  "models",
+                          "validation":  "non-empty",
+                          "generated":  false,
+                          "persist":  false,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "ARTIFACT_SNAPSHOT_TIER",
+                          "component":  "artifact",
+                          "description":  "Optional database snapshot tier for future DB snapshots.",
+                          "secret":  false,
+                          "required":  false,
+                          "profiles":  [
+                                           "local-full"
+                                       ],
+                          "source":  "user",
+                          "default":  "minimal-repro",
+                          "example_placeholder":  "minimal-repro",
+                          "validation":  "optional",
+                          "generated":  false,
+                          "persist":  false,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "RCLONE_RELEASE_PATH",
+                          "component":  "artifact",
+                          "description":  "Optional private rclone release path placeholder.",
+                          "secret":  false,
+                          "required":  false,
+                          "profiles":  [
+                                           "local-full"
+                                       ],
+                          "source":  "user",
+                          "default":  null,
+                          "example_placeholder":  "\u003cUSER_INPUT_OPTIONAL\u003e",
+                          "validation":  "optional",
+                          "generated":  false,
+                          "persist":  false,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "DB_SNAPSHOT_TIER",
+                          "component":  "database",
+                          "description":  "Runtime DB snapshot tier.",
+                          "secret":  false,
+                          "required":  true,
+                          "profiles":  [
+                                           "local-full"
+                                       ],
+                          "source":  "derived",
+                          "default":  "minimal-repro",
+                          "example_placeholder":  "minimal-repro",
+                          "validation":  "non-empty",
+                          "generated":  true,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "DB_SNAPSHOT_ROOT",
+                          "component":  "database",
+                          "description":  "Runtime restored DB snapshot root.",
+                          "secret":  false,
+                          "required":  true,
+                          "profiles":  [
+                                           "local-full"
+                                       ],
+                          "source":  "derived",
+                          "default":  null,
+                          "example_placeholder":  "./reproduction/artifacts/extracted/\u003cARTIFACT_BUNDLE_VERSION\u003e/database/\u003cDB_SNAPSHOT_TIER\u003e",
+                          "validation":  "non-empty",
+                          "generated":  false,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "DB_SCHEMA_VERSION",
+                          "component":  "database",
+                          "description":  "Expected reproduction DB schema version.",
+                          "secret":  false,
+                          "required":  true,
+                          "profiles":  [
+                                           "local-full"
+                                       ],
+                          "source":  "derived",
+                          "default":  "baro-repro-db-v1",
+                          "example_placeholder":  "baro-repro-db-v1",
+                          "validation":  "non-empty",
+                          "generated":  true,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "DB_RESTORE_BATCH_SIZE",
+                          "component":  "database",
+                          "description":  "Restore batch size.",
+                          "secret":  false,
+                          "required":  false,
+                          "profiles":  [
+                                           "local-full"
+                                       ],
+                          "source":  "derived",
+                          "default":  "500",
+                          "example_placeholder":  "500",
+                          "validation":  "optional",
+                          "generated":  true,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "DB_INIT_MODE",
+                          "component":  "database",
+                          "description":  "DB init mode.",
+                          "secret":  false,
+                          "required":  false,
+                          "profiles":  [
+                                           "local-full"
+                                       ],
+                          "source":  "derived",
+                          "default":  "restore",
+                          "example_placeholder":  "restore",
+                          "validation":  "optional",
+                          "generated":  true,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      },
+                      {
+                          "name":  "DB_ALLOW_EXISTING_SAME_SNAPSHOT",
+                          "component":  "database",
+                          "description":  "Allow idempotent restore of same snapshot.",
+                          "secret":  false,
+                          "required":  false,
+                          "profiles":  [
+                                           "local-full"
+                                       ],
+                          "source":  "derived",
+                          "default":  "false",
+                          "example_placeholder":  "false",
+                          "validation":  "optional",
+                          "generated":  true,
+                          "persist":  true,
+                          "expose_to_frontend":  false
+                      }
+                  ]
+}

@@ -1,0 +1,146 @@
+services:
+  baro-mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?MYSQL_ROOT_PASSWORD is required}
+      MYSQL_DATABASE: ${DB_NAME:-baro_repro}
+      MYSQL_USER: ${DB_USER:-baro_repro_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD is required}
+      TZ: Asia/Seoul
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - baro-mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+    networks:
+      - baro-internal
+    restart: unless-stopped
+
+
+  baro-db-init:
+    image: baro-repro-backend:c2
+    working_dir: /work
+    command:
+      - python
+      - /work/reproduction/scripts/restore_db_snapshot.py
+      - --snapshot-root
+      - /snapshot
+      - --replace-empty-only
+    environment:
+      DB_HOST: baro-mysql
+      DB_PORT: "3306"
+      DB_NAME: ${DB_NAME:-baro_repro}
+      DB_USER: ${DB_USER:-baro_repro_user}
+      DB_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD is required}
+    depends_on:
+      baro-mysql:
+        condition: service_healthy
+    networks:
+      - baro-internal
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - ./reproduction/scripts:/work/reproduction/scripts:ro
+      - ./reproduction/database:/work/reproduction/database:ro
+      - ${DB_SNAPSHOT_ROOT:-./reproduction/artifacts/extracted/${ARTIFACT_BUNDLE_VERSION:-baro-repro-12f5028-r1}/database/${DB_SNAPSHOT_TIER:-minimal-repro}}:/snapshot:ro
+    tmpfs:
+      - /tmp
+
+  baro-backend:
+    image: baro-repro-backend:c2
+    build:
+      context: ..
+      dockerfile: reproduction/docker/backend.Dockerfile
+    environment:
+      DB_HOST: baro-mysql
+      DB_PORT: "3306"
+      DB_NAME: ${DB_NAME:-baro_repro}
+      DB_USER: ${DB_USER:-baro_repro_user}
+      DB_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD is required}
+      JWT_SECRET: ${JWT_SECRET:?JWT_SECRET is required}
+      MODEL_DIR: /app/runtime/models
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:8080}
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:8080}
+      REALTIME_REFRESH_READ_ENABLED: "false"
+      ONEWAY_REFRESH_ENABLED: "false"
+      ROUNDTRIP_REFRESH_ENABLED: "false"
+    volumes:
+      - ${ARTIFACT_ROOT:-./reproduction/artifacts/extracted}/${ARTIFACT_BUNDLE_VERSION:-baro-repro-12f5028-r1}/models/${MODEL_BUNDLE_SUBDIR:-baro-runtime-v1}:/app/runtime/models:ro
+    depends_on:
+      baro-db-init:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=3).read()"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - baro-internal
+    restart: unless-stopped
+
+  baro-frontend:
+    image: baro-repro-frontend:c2
+    build:
+      context: ..
+      dockerfile: reproduction/docker/frontend.Dockerfile
+      args:
+        VITE_BACKEND_URL: /api
+    ports:
+      - "${FRONTEND_HOST_PORT:-8080}:80"
+    depends_on:
+      baro-backend:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost/__frontend_health"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - baro-internal
+    restart: unless-stopped
+
+
+  baro-artifact-check:
+    image: python:3.10-slim-bookworm
+    profiles: ["tools"]
+    working_dir: /work
+    command:
+      - python
+      - /work/reproduction/scripts/verify_artifacts.py
+      - --manifest
+      - /work/reproduction/config/artifact_manifest.template.json
+      - --artifact-root
+      - /artifacts
+      - --category
+      - ${ARTIFACT_CATEGORY:-models}
+      - --strict
+    network_mode: "none"
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - ./reproduction/scripts:/work/reproduction/scripts:ro
+      - ./reproduction/config:/work/reproduction/config:ro
+      - ${ARTIFACT_ROOT:-./reproduction/artifacts/extracted}/${ARTIFACT_BUNDLE_VERSION:-baro-repro-12f5028-r1}:/artifacts:ro
+    tmpfs:
+      - /tmp
+
+networks:
+  baro-internal:
+    driver: bridge
+
+volumes:
+  baro-mysql-data:

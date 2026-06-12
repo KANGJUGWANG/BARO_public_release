@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "default_provider": "rclone-private",
+  "providers": [
+    {
+      "name": "already-present",
+      "implementation_status": "implemented",
+      "requires_tool": null,
+      "supports_resume": false,
+      "supports_atomic_promotion": false,
+      "network_required": false,
+      "source_format": "verified local artifact root",
+      "secret_handling": "no secrets; validates destination only",
+      "default": false,
+      "profiles": [
+        "local-full",
+        "split-server"
+      ],
+      "notes": "Checks an existing artifact root against the manifest and writes state only after verification."
+    },
+    {
+      "name": "manual-copy",
+      "implementation_status": "implemented",
+      "requires_tool": null,
+      "supports_resume": true,
+      "supports_atomic_promotion": true,
+      "network_required": false,
+      "source_format": "local directory containing manifest-listed files",
+      "secret_handling": "does not print private local paths in JSON output",
+      "default": false,
+      "profiles": [
+        "local-full",
+        "split-server"
+      ],
+      "notes": "Copies only manifest-listed files into a partial directory, verifies hash/size, then promotes atomically."
+    },
+    {
+      "name": "rclone-private",
+      "implementation_status": "implemented_plan_and_cli",
+      "requires_tool": "rclone",
+      "supports_resume": true,
+      "supports_atomic_promotion": true,
+      "network_required": true,
+      "source_format": "private rclone remote and release path supplied outside Git",
+      "secret_handling": "uses subprocess list args, masks command output, and never stores config/token in repo",
+      "default": true,
+      "profiles": [
+        "local-full"
+      ],
+      "notes": "Builds safe rclone copyto commands and verifies locally. Real Drive remote execution is deferred."
+    },
+    {
+      "name": "public-drive",
+      "implementation_status": "contract_only",
+      "requires_tool": null,
+      "supports_resume": false,
+      "supports_atomic_promotion": false,
+      "network_required": true,
+      "source_format": "future public minimal bundle URL",
+      "secret_handling": "no credential expected; actual URL not hardcoded",
+      "default": false,
+      "profiles": [
+        "public-smoke"
+      ],
+      "notes": "Reserved for a future public minimal bundle, not implemented in C3."
+    }
+  ]
+}

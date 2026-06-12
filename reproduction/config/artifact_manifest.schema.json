@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "baro-reproduction-artifact-manifest.schema.json",
+  "title": "BARO Reproduction Artifact Manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "reproduction_version",
+    "source_commit",
+    "public_commit",
+    "generated_at",
+    "artifacts",
+    "database_snapshots",
+    "samples",
+    "compatibility"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "reproduction_version": {
+      "type": "string"
+    },
+    "source_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{7,40}$"
+    },
+    "public_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{7,40}$"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 10,
+      "items": {
+        "type": "object",
+        "required": [
+          "role",
+          "bundle_path",
+          "restore_path",
+          "size_bytes",
+          "sha256",
+          "required",
+          "category",
+          "status"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "ready",
+              "planned",
+              "optional",
+              "deprecated"
+            ]
+          }
+        }
+      }
+    },
+    "database_snapshots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "enum": [
+              "ready",
+              "planned",
+              "optional",
+              "deprecated"
+            ]
+          }
+        }
+      }
+    },
+    "samples": {
+      "type": "array"
+    },
+    "compatibility": {
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "baro-reproduction-db-snapshot-manifest.schema.json",
+  "title": "BARO DB Snapshot Manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "snapshot_version",
+    "tier",
+    "reproduction_version",
+    "source_commit",
+    "public_commit",
+    "generated_at",
+    "sanitization_policy_version",
+    "selection",
+    "tables",
+    "total_rows",
+    "total_uncompressed_bytes",
+    "files",
+    "validation",
+    "status"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "baro-repro-db-v1"
+    },
+    "status": {
+      "enum": [
+        "planned",
+        "ready",
+        "verified",
+        "deprecated"
+      ]
+    },
+    "tier": {
+      "enum": [
+        "minimal-repro",
+        "extended-repro"
+      ]
+    }
+  }
+}

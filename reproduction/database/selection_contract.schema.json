@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BARO bounded DB snapshot selection contract",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "default_tier",
+    "selector_contract_version",
+    "tiers"
+  ]
+}

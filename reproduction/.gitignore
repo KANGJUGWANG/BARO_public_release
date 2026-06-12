@@ -1,0 +1,46 @@
+# Runtime secrets and generated state
+.env.repro
+*.env
+secrets/
+state/
+logs/
+tmp/
+*.log
+
+# Model and artifact payloads
+artifacts/extracted/
+artifacts/downloads/
+artifacts/*.zip
+artifacts/*.tar
+artifacts/*.tar.gz
+artifacts/*.tgz
+artifacts/*.zst
+artifacts/**/*.pkl
+artifacts/**/*.parquet
+artifacts/**/*.csv.gz
+
+# Database snapshots and dumps
+samples/*.sql
+samples/*.sql.gz
+samples/*.dump
+samples/*.db
+samples/*.sqlite
+samples/*.zst
+
+# Docker/volume diagnostics
+volumes/
+diagnostics/
+checksum.tmp
+artifacts/runtime/
+artifacts/.partial/
+artifacts/**/.artifact-state.json
+artifacts/**/*.manifest.json
+artifacts/**/*.sha256
+artifacts/**/*.tmp
+artifacts/**/*.part
+artifacts/**/*.zip
+artifacts/**/*.sql
+artifacts/**/*.sql.gz
+artifacts/**/*.dump
+artifacts/**/*.db
+artifacts/**/*.sqlite
